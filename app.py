@@ -1,5 +1,5 @@
 from flask import *
-from engines.duckduckgo import duckduckgo_search
+from engines.google import duckduckgo_search
 app = Flask(__name__)
 
 
@@ -12,7 +12,7 @@ def index():
 def search():
     query = request.args.get('query')
     if query:
-        results = duckduckgo_search("query")
+        results = google_search("query")
         reusltsHtml = ""
         for i in range(len(results)):
             link = results["links"][i]
