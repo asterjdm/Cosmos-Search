@@ -16,11 +16,9 @@
     <div class="results">
         {% for result in results %}
             <div class="searchresult">
-                <a class="resulta" href="{{result['link']}}">
                     <h2 class="resultTitle">{{result['title']}}</h2>
                     <p class="resultLink">{{result['link']}}</p>
                     <p class="resultDescription">{{result['description']}}</p>
-                </a>
             </div>
         {% endfor %}
     </div>

@@ -1,14 +1,26 @@
 body{
     background-color: rgb(2, 13, 44);
     color: antiquewhite;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 3vw;
 }
 
 .results{
     padding: 10px;
-    width: 90em;
 }
 
 .searchresult{
+    height: 2.6em;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    
+    
+
+    width: 80em;
     background-color: #172135;
     border-radius: 50px;
     text-align: center;
