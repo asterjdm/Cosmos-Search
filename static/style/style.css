@@ -2,13 +2,24 @@ body{
     background-color: rgb(2, 13, 44);
     color: antiquewhite;
 }
+
+.results{
+    border: 2px solid #ccc;
+    padding: 10px;
+    width: 20em;
+}
+
 .searchresult{
     text-decoration: none;
     background-color: #172135;
     border-radius: 50px;
     text-align: center;
+    width: fit-content;
+    padding: 5px;
+    margin-bottom: 1em;
 }
 
 .resulta{
     color: aliceblue;
+    text-decoration: none;
 }
