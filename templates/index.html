@@ -15,11 +15,13 @@
     </form>
     <div class="results">
         {% for result in results %}
-            <div class="searchresult">
-                    <h2 class="resultTitle">{{result['title']}}</h2>
-                    <p class="resultLink">{{result['link']}}</p>
-                    <p class="resultDescription">{{result['description']}}</p>
-            </div>
+            <a class="resultA" href="{{result['link']}}">
+                <div class="searchresult">
+                        <h2 class="resultTitle">{{result['title']}}</h2>
+                        <p class="resultLink">{{result['link']}}</p>
+                        <p class="resultDescription">{{result['description']}}</p>
+                </div>
+            </a>
         {% endfor %}
     </div>
 </body>
