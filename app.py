@@ -1,5 +1,5 @@
 from flask import *
-from engines.google import duckduckgo_search
+from engines.google import google_search
 app = Flask(__name__)
 
 
@@ -12,12 +12,12 @@ def index():
 def search():
     query = request.args.get('query')
     if query:
-        results = google_search("query")
-        reusltsHtml = ""
+        results = google_search(query)
+        resultHtml = ""
         for i in range(len(results)):
-            link = results["links"][i]
-            title = results["title"][i]
-            description = results["descriptions"][i]
+            link = results[i]["links"]
+            title = results[i]["title"]
+            description = results[i]["descriptions"]
             resultHtml += render_template("search_result.html", link=link, title=title, description=description)
         return resultHtml
 

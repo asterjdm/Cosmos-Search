@@ -1,9 +1,9 @@
-import utils
+import utils as utils
 import requests
 from bs4 import BeautifulSoup
-import config
+import config as config
 
-def search(query):
+def google_search(query):
     url_encode_query = utils.encode_url(query)
     url = "https://www.google.com/search?q=" + url_encode_query
     headers = config.headers
@@ -28,11 +28,14 @@ def search(query):
     descriptionsParents = soup.find_all("div", {"data-sncf": "1"})
     descriptions = []
     for desc in descriptionsParents:
-        descriptions.append(desc.find("div").find("span").text)
+        try:
+            descriptions.append(desc.find("div").find("span").text)
+        except:
+            descriptions.append("")
 
     resultsDict = []
-
-    for i in range(0, len(links)):
+    
+    for i in range(0, len(descriptions)):
         resultsDict.append({"title": titles[i], "descriptions": descriptions[i], "links": links[i]})
     return resultsDict
 
