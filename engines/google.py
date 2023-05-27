@@ -43,7 +43,7 @@ def google_search(query):
     print(len(links))
     for i in range(0, len(descriptions)):
         try:
-            if not links[i].startswith("#"):               
+            if links[i].startswith("http"):               
                     resultsDict.append({"title": titles[i], "description": descriptions[i], "link": links[i]})
         except Exception as e:
             print("Error: " + str(e))
