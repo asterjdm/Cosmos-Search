@@ -19,7 +19,11 @@ def google_search(query):
     for a in linksContainers:
         linkTag = a.find("a", href=True)
         url = linkTag.get("href")
-        title = linkTag.text
+        titleTag = linkTag.find("h3")
+        if titleTag:
+            title = titleTag.getText()
+        else:
+            title = "No title"
         links.append(url)
         titles.append(title)
 
