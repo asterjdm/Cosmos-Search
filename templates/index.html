@@ -8,10 +8,12 @@
     <title>JdM's Search</title>
 </head>
 <body>
-    <h1>JdM's search</h1>
-    <form method="get" action="/search/">
-        <input placeholder="What do you want to find ?" type="text" name="query">
-        <button type="submit">GO</button>
+    <a class="homeA" href="/">
+        <h1>JdM's search</h1>
+    </a>
+    <form method="get" action="/search/" class="searchForm">
+        <input placeholder="What do you want to find ?" value="{{query}}" class="searchInput" type="text" name="query">
+        <button class="searchButton" type="submit">Let's find</button>
     </form>
     <div class="results">
         {% for result in results %}

@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET"])
 def index():
-    return render_template("index.html")
+    return render_template("index.html", query="")
 
 
 @app.route("/search/", methods=["GET"])
@@ -13,7 +13,7 @@ def search():
     query = request.args.get('query')
     if query:
         results = google_search(query)
-        return render_template("index.html", results = results)
+        return render_template("index.html", results = results, query = query)
 
     else:
         return redirect(url_for('index'))

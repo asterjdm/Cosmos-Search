@@ -1,36 +1,68 @@
-body{
-    background-color: rgb(2, 13, 44);
-    color: antiquewhite;
+body {
+    background-color: rgb(54, 54, 54);
+    color: rgb(255, 255, 255);
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+}
+
+.results {
     padding: 0 3vw;
 }
 
-.results{
-    padding: 10px;
+.homeA{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
 }
 
-.searchresult{
-    height: 2.6em;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    
-    
+.searchInput{
+    width: 50%;
+    height: 45px;
+    border-radius: 10px;
+    background-color: #4d4d4d;
+    border-style: solid;
+    border-color: rgb(255, 255, 255);
+    color: aliceblue;
+    font-size: large;
+}
 
-    width: 80em;
-    background-color: #172135;
+.searchButton{
+    height: 45px;
+    background-color: rgb(255, 255, 255);
+    margin-left: 20px;
+    border-radius: 10px;
+}
+
+.searchForm{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.searchresult {
+    max-width: 80rem;
+    background-color: #4d4d4d;
     border-radius: 50px;
     text-align: center;
-
-    height: fit-content;
     padding: 5px;
     margin-bottom: 1em;
 }
 
-.resultA{
+.resultA {
     color: aliceblue;
     text-decoration: none;
+}
+
+/* Styles for responsive design */
+
+@media screen and (max-width: 768px) {
+    /* Adjust the styles for smaller screens */
+    .searchresult {
+        max-width: 90vw;
+    }
 }
