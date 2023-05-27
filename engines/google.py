@@ -40,7 +40,7 @@ def google_search(query):
     resultsDict = []
     
     for i in range(0, len(descriptions)):
-        if not links[i].startWith("#"):
+        if not links[i].startswith("#"):
             resultsDict.append({"title": titles[i], "descriptions": descriptions[i], "links": links[i]})
     return resultsDict
 
