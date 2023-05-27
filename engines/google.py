@@ -35,11 +35,12 @@ def google_search(query):
         try:
             descriptions.append(desc.find("div").find("span").text)
         except:
-            descriptions.append("")
+            descriptions.append("No description")
 
     resultsDict = []
     
     for i in range(0, len(descriptions)):
-        resultsDict.append({"title": titles[i], "descriptions": descriptions[i], "links": links[i]})
+        if not links[i].startWith("#"):
+            resultsDict.append({"title": titles[i], "descriptions": descriptions[i], "links": links[i]})
     return resultsDict
 
