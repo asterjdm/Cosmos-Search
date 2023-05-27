@@ -4,17 +4,16 @@ body{
 }
 
 .results{
-    border: 2px solid #ccc;
     padding: 10px;
-    width: 20em;
+    width: 90em;
 }
 
 .searchresult{
-    text-decoration: none;
     background-color: #172135;
     border-radius: 50px;
     text-align: center;
-    width: fit-content;
+
+    height: fit-content;
     padding: 5px;
     margin-bottom: 1em;
 }
