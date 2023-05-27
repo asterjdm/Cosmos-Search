@@ -32,7 +32,7 @@ def search(query):
 
     resultsDict = []
 
+    for i in range(0, len(links)):
+        resultsDict.append({"title": titles[i], "descriptions": descriptions[i], "links": links[i]})
+    return resultsDict
 
-
-
-search("linux")
