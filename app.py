@@ -13,13 +13,7 @@ def search():
     query = request.args.get('query')
     if query:
         results = google_search(query)
-        resultHtml = ""
-        for i in range(len(results)):
-            link = results[i]["links"]
-            title = results[i]["title"]
-            description = results[i]["descriptions"]
-            resultHtml += render_template("search_result.html", link=link, title=title, description=description)
-        return render_template("index.html") + resultHtml
+        return render_template("index.html", results = results)
 
     else:
         return redirect(url_for('index'))

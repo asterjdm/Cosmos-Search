@@ -1,0 +1,14 @@
+body{
+    background-color: rgb(2, 13, 44);
+    color: antiquewhite;
+}
+.searchresult{
+    text-decoration: none;
+    background-color: #172135;
+    border-radius: 50px;
+    text-align: center;
+}
+
+.resulta{
+    color: aliceblue;
+}
