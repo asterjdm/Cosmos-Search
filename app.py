@@ -19,7 +19,7 @@ def search():
             title = results[i]["title"]
             description = results[i]["descriptions"]
             resultHtml += render_template("search_result.html", link=link, title=title, description=description)
-        return resultHtml
+        return render_template("index.html") + resultHtml
 
     else:
         return redirect(url_for('index'))
