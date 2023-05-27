@@ -34,6 +34,18 @@ body {
     background-color: rgb(255, 255, 255);
     margin-left: 20px;
     border-radius: 10px;
+    transition: transform 0.5s;
+
+}
+
+.searchButton:hover{
+    background-color: rgb(141, 141, 141);
+    transform: scale(1.1);
+
+}
+
+input:focus {
+    outline:none;
 }
 
 .searchForm{
@@ -51,6 +63,7 @@ body {
     text-align: center;
     padding: 5px;
     margin-bottom: 1em;
+    transition: transform 0.5s;
 }
 
 .resultA {
@@ -58,10 +71,11 @@ body {
     text-decoration: none;
 }
 
-/* Styles for responsive design */
+.searchresult:hover{
+    transform: scale(1.03);
+}
 
 @media screen and (max-width: 768px) {
-    /* Adjust the styles for smaller screens */
     .searchresult {
         max-width: 90vw;
     }
