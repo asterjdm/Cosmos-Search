@@ -1,2 +1,2 @@
 # JdM's Search
-Privacy friendly simple search engine.
+Privacy friendly simple Metasearch engine based on google results.
