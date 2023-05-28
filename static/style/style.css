@@ -109,6 +109,7 @@ body {
     color: black;
     background: var(--content-color);
     transition: 0.3s ease-in-out;
+    overflow-y: hidden;
 }
 
 .result-link {
