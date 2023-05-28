@@ -5,18 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename= 'style/style.css') }}">
-    <title>JdM's Search</title>
+    <title>Cosmos Search</title>
 </head>
 <body>
     <div class="all">
         <header>
-            <a target="_blank" href="https://github.com/judemont/jdm-search">
+            <a target="_blank" href="https://github.com/asterjdm/Cosmos-Search">
                 <img src="{{ url_for('static', filename='images/github.png') }}" class="githubImg" width="50" height="50" alt="GitHub">
             </a>
         </header>
     <div class="main">
         <a class="home-link" href="/">
-            <h1 class="main-title">JdM's search</h1>
+            <h1 class="main-title">Cosmos Search</h1>
         </a>
         <form method="get" action="/search/" class="searchForm">
             <input placeholder="What do you want to find ?" value="{{query}}" class="searchInput" type="text" name="query">
