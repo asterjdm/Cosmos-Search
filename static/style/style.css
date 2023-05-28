@@ -14,12 +14,13 @@
     --text-color: #E8AA42;
     --content-color: #F8F1F1;
     --hover-color: #E57C23;
+    --background-color: #025464
 
 }
 
 body {
     
-    background-color: #025464;
+    background-color: var(--background-color);
 
 }
 
