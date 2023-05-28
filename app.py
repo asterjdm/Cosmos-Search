@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET"])
 def index():
-    return render_template("index.html", langCodes=config.langCodes)
+    return render_template("index.html")
 
 
 @app.route("/search/", methods=["GET"])
@@ -15,8 +15,8 @@ def search():
     query = request.args.get('query')
     selectedLang = request.args.get('lang')
     if query:
-        results = google_search(query)
-        return render_template("index.html", results = results, query = query, langCodes=config.langCodes, lang=selectedLang)
+        results = google_search(query, selectedLang)
+        return render_template("index.html", results = results, query = query)
 
     else:
         return redirect(url_for('index'))

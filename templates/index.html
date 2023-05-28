@@ -16,11 +16,6 @@
         <form method="get" action="/search/" class="searchForm">
             <input placeholder="What do you want to find ?" value="{{query}}" class="searchInput" type="text" name="query">
             <button class="searchButton" type="submit">Search</button>
-            <select class="langSelect" name="lang" id="lang">
-                {% for lang in langCodes.keys() %}
-                    <option value="{{lang}}">{{langCodes[lang]["native"]}}</option>
-                {% endfor %}
-            </select>
         </form>
         <div class="results">
             {% for result in results %}
