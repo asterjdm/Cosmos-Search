@@ -19,3 +19,4 @@ Windows :
 ```bash
 python app.py
 ```
+Now you can test app at [localhost:8080](https://localhost:8080)
