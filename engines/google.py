@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import config as config
 
 def google_search(query, lang = "en"):
-    if(type(lang) == "NoneType"):
+    if(type(lang) == None.__class__):
         lang = "en"
     url_encode_query = utils.encode_url(query)
     url = "https://www.google.com/search?q=" + url_encode_query + "&lr=lang_" + lang + "&hl=" + lang
