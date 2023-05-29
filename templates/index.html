@@ -46,11 +46,16 @@
                 </a>
             {% endfor %}
 
-            {% if isSearch %}
-                <a href="{{next_url}}">NEXT</a>
-            {% endif %}
-            <p class="description"><i>Privacy friendly simple Metasearch engine based on google results.</i></p>
+
         </div>
+        {% if isSearch %}
+        <a class="next-page-link" href="{{next_url}}">
+            <div class="next-page">
+                <p class="next-text" >Next</p>
+            </div>
+        </a>
+        {% endif %}
+        <p class="description"><i>Privacy friendly simple Metasearch engine based on google results.</i></p>
     </div>
 </body>
 </html>
