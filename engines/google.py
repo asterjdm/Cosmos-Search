@@ -3,11 +3,11 @@ import requests
 from bs4 import BeautifulSoup
 import config as config
 
-def google_search(query, lang = "en"):
+def google_search(query, lang = "en", page = 0):
     if(type(lang) == None.__class__):
         lang = "en"
     url_encode_query = utils.encode_url(query)
-    url = "https://www.google.com/search?q=" + url_encode_query + "&lr=lang_" + lang + "&hl=" + lang
+    url = "https://www.google.com/search?q=%s&start=%d&lr=lang_%s&hl=%s" % (url_encode_query, (page)*10, lang, lang)
     print(url)
     headers = config.headers
     with requests.Session() as s:
