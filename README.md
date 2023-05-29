@@ -14,4 +14,4 @@ pip install -r requirements.txt
 ```
 flask run
 ```
-### You can now test the app at [localhost:8080](http://localhost:8080)
+### You can now test the app at [localhost:5000](http://localhost:5000)
