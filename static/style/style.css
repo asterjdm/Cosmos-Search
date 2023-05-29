@@ -183,7 +183,7 @@ body {
 
     }
 
-    .searchresult, inforesult {
+    .searchresult, .inforesult {
 
         width: 470px;
 
@@ -229,7 +229,7 @@ body {
 
     }
 
-    .searchresult {
+    .searchresult, .inforesult {
 
         width: 310px;
 
@@ -269,7 +269,7 @@ body {
 
     }
 
-    .searchresult {
+    .searchresult, .inforesult {
 
         width: 247px;
 
