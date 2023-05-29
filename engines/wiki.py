@@ -1,11 +1,11 @@
 import wikipedia
 
 def getWikiSummary(query, lang="en"):
-    if(type(lang) == None.__class__):
-        lang = "en"
-    wikipedia.set_lang(lang)
-    search_result = wikipedia.search(query, results=1)
-    if len(search_result) >= 1:
+    try:
+        if(type(lang) == None.__class__):
+            lang = "en"
+        wikipedia.set_lang(lang)
+        search_result = wikipedia.search(query, results=1)
         search_result = search_result[0]
         page = wikipedia.page(search_result, auto_suggest=False)
         title = page.title
@@ -16,7 +16,5 @@ def getWikiSummary(query, lang="en"):
         else:
             image = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/800px-Wikipedia-logo-v2.svg.png"
         return [{"title": title, "url": url, "summary": summary, "image": image}]
-    else:
+    except wikipedia.exceptions.PageError as e:
         return []
-
-
