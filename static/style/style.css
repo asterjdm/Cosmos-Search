@@ -149,6 +149,14 @@ body {
 
 }
 
+.searchresult, .inforesult{
+    transition: transform 0.5s;
+}
+
+.searchresult:hover, .inforesult:hover{
+    transform: scale(1.03);
+}
+
 /*Responsive for small screens*/
 
 @media screen and (max-width: 800px) {
