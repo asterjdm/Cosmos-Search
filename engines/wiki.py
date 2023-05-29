@@ -1,4 +1,5 @@
 import wikipedia
+import random
 
 def getWikiSummary(query, lang="en"):
     try:
@@ -12,7 +13,7 @@ def getWikiSummary(query, lang="en"):
         url = page.url
         summary = wikipedia.summary(title, sentences=2, auto_suggest=False)
         if len(page.images) >= 1:
-            image = page.images[0]
+            image = page.images[random.randint(0, len(page.images))]
         else:
             image = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/800px-Wikipedia-logo-v2.svg.png"
         return [{"title": title, "url": url, "summary": summary, "image": image}]
