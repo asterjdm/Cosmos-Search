@@ -1,5 +1,6 @@
 # Cosmos Search
 Privacy friendly simple Metasearch engine based on google results.
+
 ## Run locally
 ### Clone the repository :
 ```bash
