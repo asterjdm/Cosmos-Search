@@ -16,5 +16,7 @@ def getWikiSummary(query, lang="en"):
         else:
             image = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/800px-Wikipedia-logo-v2.svg.png"
         return [{"title": title, "url": url, "summary": summary, "image": image}]
+    except wikipedia.exceptions.DisambiguationError as e:
+        return []
     except wikipedia.exceptions.PageError as e:
         return []
