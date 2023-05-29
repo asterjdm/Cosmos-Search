@@ -1,7 +1,6 @@
 from flask import *
 from engines.google import google_search
-import config
-
+from engines.wiki import getWikiSummary
 app = Flask(__name__)
 
 
@@ -15,7 +14,8 @@ def search():
     query = request.args.get('query')
     selectedLang = request.args.get('lang')
     if query:
-        results = google_search(query, selectedLang)
+        wiki = getWikiSummary(query, lang=selectedLang)
+        results = google_search(query, lang=selectedLang)
         return render_template("index.html", results = results, query = query)
 
     else:
