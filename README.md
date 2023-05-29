@@ -11,12 +11,7 @@ cd Cosmos-Search
 pip install -r requirements.txt
 ```
 ### Run the app :
-Linux :
-```bash
-python3 app.py
 ```
-Windows :
-```bash
-python app.py
+flask run
 ```
 ### You can now test the app at [localhost:8080](http://localhost:8080)
