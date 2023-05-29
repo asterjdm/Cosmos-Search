@@ -115,7 +115,22 @@ body {
     overflow-y: hidden;
 }
 
-.result-link {
+.inforesult {
+
+    margin: 10px;
+    border: 3px solid var(--text-color);
+    padding: 5px;
+    padding-bottom: 10px;
+    height: fit-content;
+    width: 800px;
+    border-radius: 30px;
+    text-align: center;
+    color: var(--segondary-text-color);
+    background: var(--content-color);
+    transition: 0.3s ease-in-out;
+}
+
+.result-link, .info-link {
     color: var(--segondary-text-color);
     text-decoration: none;
 }
@@ -160,7 +175,7 @@ body {
 
     }
 
-    .searchresult {
+    .searchresult, inforesult {
 
         width: 470px;
 
@@ -173,13 +188,13 @@ body {
 
     }
 
-    .resultLink, .resultDescription {
+    .resultLink, .resultDescription, .infoLink, .infoDescription {
 
         font-size: 10px;
 
     }
 
-    .searchInput:hover, .searchInput:focus, .searchButton:hover, .searchresult:hover {
+    .searchInput:hover, .searchInput:focus, .searchButton:hover, .searchresult:hover, .inforesult:hover {
 
         border-color: var(--text-color);
         color: var(--segondary-text-color);
@@ -220,7 +235,7 @@ body {
 
     }
 
-    .resultLink, .resultDescription {
+    .resultLink, .resultDescription, .infoLink, .infoDescription {
 
         font-size: 8px;
 

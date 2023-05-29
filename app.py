@@ -16,7 +16,7 @@ def search():
     if query:
         wiki = getWikiSummary(query, lang=selectedLang)
         results = google_search(query, lang=selectedLang)
-        return render_template("index.html", results = results, query = query)
+        return render_template("index.html", results = results, query = query, info=wiki)
 
     else:
         return redirect(url_for('index'))

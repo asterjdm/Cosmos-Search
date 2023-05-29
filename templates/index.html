@@ -23,6 +23,19 @@
             <button class="searchButton" type="submit">Search</button>
         </form>
         <div class="results">
+            <div class="info">
+                {% for i in info %}
+                    <a class="info-link" href="{{i["url"]}}">
+                        <div class="inforesult">
+                            <div class="info-image">
+                                <img src="{{i["image"]}}" alt="img" width="200">
+                            </div>
+                            <h2 class="infoTitle">{{i["title"]}}</h2>
+                            <p class="infoDescription">{{i["summary"]}}</p>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
             {% for result in results %}
                 <a class="result-link" href="{{result['link']}}">
                     <div class="searchresult">

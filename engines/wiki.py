@@ -11,7 +11,11 @@ def getWikiSummary(query, lang="en"):
         title = page.title
         url = page.url
         summary = wikipedia.summary(title, sentences=2, auto_suggest=False)
-        return [{"title": title, "url": url, "summary": summary}]
+        if len(page.images) >= 1:
+            image = page.images[0]
+        else:
+            image = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/800px-Wikipedia-logo-v2.svg.png"
+        return [{"title": title, "url": url, "summary": summary, "image": image}]
     else:
         return []
 
