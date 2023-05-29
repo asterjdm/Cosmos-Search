@@ -143,6 +143,11 @@ body {
 
 }
 
+.description{
+    color: azure;
+    margin-bottom: 20px;
+}
+
 .githubImg:hover{
 
     transform: scale(1.3);
