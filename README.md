@@ -13,7 +13,7 @@ Deploy on vercel :
 ### Just a beautiful search engine with good results !
 
 ## How Cosmos Search work ?
-To have good search results Cosmos search scarpe content of various website like Google, Wikipedia or StackOverFlow.
+To have good search results Cosmos search scrape content of various website like Google, Wikipedia or StackOverFlow.
 
 Without using paid official APIs.
 
