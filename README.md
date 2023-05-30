@@ -4,6 +4,13 @@ Privacy friendly simple Metasearch engine based on google results.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fasterjdm%2Fcosmos-search)
 
+## Why cosmos ?
+* No personalized results
+* No tracking
+* No ads
+* No partnership with other search engines (like google)
+__Just a beautiful search engine with good results !__
+
 
 ## Run locally
 ### Clone the repository :
