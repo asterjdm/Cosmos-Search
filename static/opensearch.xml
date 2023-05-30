@@ -1,7 +1,8 @@
-<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
     <ShortName>Cosmos</ShortName>
-    <Description>Cosmos Search</Description>
+    <LongName>Cosmos Search</LongName>
+    <Description>Privacy friendly simple Metasearch engine based on google results.</Description>
     <InputEncoding>UTF-8</InputEncoding>
-    <Url type="text/html" template="https://cosmosearch.vercel.app/search/?query={searchTerms}"/>
-    <moz:SearchForm>https://cosmosearch.vercel.app</moz:SearchForm>
+    <Url method="get" rel="results" type="text/html" template="https://cosmosearch.vercel.app/search/?query={searchTerms}" />
 </OpenSearchDescription>
