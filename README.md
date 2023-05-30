@@ -9,7 +9,8 @@ Privacy friendly simple Metasearch engine based on google results.
 * No tracking
 * No ads
 * No partnership with other search engines (like google)
-__Just a beautiful search engine with good results !__
+
+### Just a beautiful search engine with good results !
 
 
 ## Run locally
