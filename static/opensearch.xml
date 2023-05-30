@@ -1,0 +1,7 @@
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/"xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+    <ShortName>Cosmos</ShortName>
+    <Description>Cosmos Search</Description>
+    <InputEncoding>UTF-8</InputEncoding>
+    <Url type="text/html" template="https://cosmosearch.vercel.app/search/?query={searchTerms}"/>
+    <moz:SearchForm>https://cosmosearch.vercel.app</moz:SearchForm>
+</OpenSearchDescription>
