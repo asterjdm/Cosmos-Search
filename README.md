@@ -14,6 +14,7 @@ Deploy on vercel :
 
 ## How Cosmos Search work ?
 To have good search results Cosmos search scarpe content of various website like Google, Wikipedia or StackOverFlow.
+
 Without using paid official APIs.
 
 ## Run locally
