@@ -115,6 +115,12 @@ body {
     overflow-y: hidden;
 }
 
+.listInfo{
+    color: azure;
+    margin-left: 30%;
+    margin-bottom: 15px;
+}
+
 .inforesult {
 
     margin: 10px;
