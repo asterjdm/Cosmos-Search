@@ -17,11 +17,11 @@ def google_search(query, page=0):
 
         links_container = soup.find("div", {"id": "search"})
         if links_container is None:
-            return {"error": "Failed to find links container in the HTML"}
+            return [{"error": "Failed to find links container in the HTML"}]
 
         link_containers = links_container.find_all("div", {"class": "g"})
         if not link_containers:
-            return {"error": "Failed to find link containers in the HTML"}
+            return [{"error": "Failed to find link containers in the HTML"}]
 
         descriptions_parents = soup.find_all("div", {"data-sncf": "1"})
 
@@ -53,8 +53,7 @@ def google_search(query, page=0):
         return results_dict
 
     except requests.RequestException as e:
-        return {"error": f"Error making the HTTP request: {str(e)}"}
+        return [{"error": f"Error making the HTTP request: {str(e)}"}]
     except Exception as e:
-        return {"error": f"Error occurred: {str(e)}"}
+        return [{"error": f"Error occurred: {str(e)}"}]
 
-    return {"error": "Unknown error occurred"}  # Return an error dictionary in case of unknown errors
