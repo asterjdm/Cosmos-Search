@@ -22,11 +22,8 @@ def get_wiki_main_image(title):
         return "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/150px-Wikipedia-logo-v2.svg.png"
 
 
-def getWikiSummary(query, lang="en"):
+def getWikiSummary(query):
     try:
-        if(type(lang) == None.__class__):
-            lang = "en"
-        wikipedia.set_lang(lang)
         search_result = wikipedia.search(query, results=1)
         if(len(search_result) >= 1):
             search_result = search_result[0]

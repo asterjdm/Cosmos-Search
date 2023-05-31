@@ -12,7 +12,6 @@ def index():
 @app.route("/search/", methods=["GET"])
 def search():
     query = request.args.get('query')
-    selectedLang = request.args.get('lang')
     actuPage = request.args.get('page')
 
     if query:
@@ -20,11 +19,11 @@ def search():
             actuPage = 0
         actuPage = int(actuPage)
         if actuPage == 0:
-            wiki = getWikiSummary(query, lang=selectedLang)
+            wiki = getWikiSummary(query)
         else:
             wiki = []
-        results = google_search(query, lang=selectedLang, page=actuPage)
-        next_url = "/search?query=%s&lang=%s&page=%d" % (query, selectedLang, actuPage+1)
+        results = google_search(query, page=actuPage)
+        next_url = "/search?query=%s&page=%d" % (query, actuPage+1)
         return render_template("index.html", results=results, query=query, info=wiki, next_url=next_url, isSearch=True)
 
     else:
