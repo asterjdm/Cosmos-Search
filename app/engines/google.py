@@ -2,50 +2,70 @@ import app.utils as utils
 import requests
 from bs4 import BeautifulSoup
 
-def google_search(query, page = 0):
-    url_encode_query = utils.encode_url(query)
-    url = "https://www.google.com/search?q=%s&start=%d" % (url_encode_query, (page)*10)
-    print(url)
-    headers = utils.get_random_header()
-    with requests.Session() as s:
-        s.post(url, headers=headers)
-        response = s.get(url, headers=headers)
-    soup = BeautifulSoup(response.text, 'html.parser')
-    linksContainer = soup.find("div", {"id": "search"})
-    print(linksContainer)
-    links = []
-    titles = []
-    descriptions = []
-    if type(linksContainer) != None.__class__:
-        linksContainers = linksContainer.find_all("div", {"class": "g"})
+class GoogleSearchError(Exception):
+    pass
 
-        for a in linksContainers:
-            linkTag = a.find("a", href=True)
-            url = linkTag.get("href")
-            titleTag = linkTag.find("h3")
-            if titleTag:
-                title = titleTag.getText()
+class GoogleRequestError(GoogleSearchError):
+    pass
+
+class GoogleParsingError(GoogleSearchError):
+    pass
+
+def google_search(query, page=0):
+    try:
+        url_encode_query = utils.encode_url(query)
+        url = f"https://www.google.com/search?q={url_encode_query}&start={(page)*10}"
+        headers = utils.get_random_header()
+
+        with requests.Session() as s:
+            s.post(url, headers=headers)
+            response = s.get(url, headers=headers)
+            response.raise_for_status()  
+
+        soup = BeautifulSoup(response.text, 'html.parser')
+
+        links_container = soup.find("div", {"id": "search"})
+        if links_container is None:
+            raise GoogleParsingError("Failed to find links container in the HTML")
+
+        link_containers = links_container.find_all("div", {"class": "g"})
+        if not link_containers:
+            raise GoogleParsingError("Failed to find link containers in the HTML")
+
+        descriptions_parents = soup.find_all("div", {"data-sncf": "1"})
+
+        links = []
+        titles = []
+        descriptions = []
+
+        for a in link_containers:
+            link_tag = a.find("a", href=True)
+            url = link_tag.get("href")
+            title_tag = link_tag.find("h3")
+            if title_tag:
+                title = title_tag.getText()
             else:
                 title = "No title"
             links.append(url)
             titles.append(title)
-            descriptionsParents = soup.find_all("div", {"data-sncf": "1"})
 
-            for desc in descriptionsParents:
-                try:
-                    descriptions.append(desc.find("div").find("span").text)
-                except:
-                    descriptions.append("No description")            
+        for description_parent in descriptions_parents:
+            try:
+                description = description_parent.find("div").find("span").text
+            except Exception as e:
+                description = "No description"
+                print(f"Error retrieving description: {str(e)}")
 
+            descriptions.append(description)
 
+        results_dict = [{"title": titles[i], "description": descriptions[i], "link": links[i]} for i in range(len(descriptions)) if links[i].startswith("http")]
+        return results_dict
 
-    resultsDict = []
-    for i in range(0, len(descriptions)):
-        try:
-            if links[i].startswith("http"):               
-                    resultsDict.append({"title": titles[i], "description": descriptions[i], "link": links[i]})
-        except Exception as e:
-            print("Error: " + str(e))
-    
-    return resultsDict
+    except requests.RequestException as e:
+        raise GoogleRequestError(f"Error making the HTTP request: {str(e)}")
+    except GoogleSearchError as e:
+        raise e
+    except Exception as e:
+        raise GoogleParsingError(f"Error occurred: {str(e)}")
 
+    return [] 
