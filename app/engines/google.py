@@ -1,4 +1,4 @@
-import utils as utils
+import app.utils as utils
 import requests
 from bs4 import BeautifulSoup
 import config as config

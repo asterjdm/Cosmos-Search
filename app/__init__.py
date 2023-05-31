@@ -1,6 +1,6 @@
 from flask import *
-from engines.google import google_search
-from engines.wiki import getWikiSummary
+from app.engines.google import google_search
+from app.engines.wiki import getWikiSummary
 app = Flask(__name__)
 
 

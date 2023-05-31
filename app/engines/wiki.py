@@ -1,7 +1,7 @@
 import wikipedia
 import requests
 import json
-from utils import encode_url
+from app.utils import encode_url
 
 def get_wiki_main_image(title):
 
