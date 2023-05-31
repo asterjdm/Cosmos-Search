@@ -50,8 +50,8 @@ def google_search(query, page=0):
             descriptions.append(description)
         results_dict = []
         for i in range(len(descriptions)):
-            if(links[i].startswith("http"))
-            results_dict.append({"title": titles[i], "description": descriptions[i], "link": links[i]})
+            if(links[i].startswith("http")):
+                results_dict.append({"title": titles[i], "description": descriptions[i], "link": links[i]})
         return results_dict
 
     except requests.RequestException as e:

@@ -48,6 +48,11 @@ body {
 
 }
 
+.ifrm{
+    position: static;
+    display: none;
+}
+
 .searchForm{
 
     margin-top: 25px;
