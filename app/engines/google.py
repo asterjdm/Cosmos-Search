@@ -11,9 +11,8 @@ def google_search(query, page = 0):
         s.post(url, headers=headers)
         response = s.get(url, headers=headers)
     soup = BeautifulSoup(response.text, 'html.parser')
-
     linksContainer = soup.find("div", {"id": "search"})
-    
+    print(linksContainer)
     links = []
     titles = []
     descriptions = []
