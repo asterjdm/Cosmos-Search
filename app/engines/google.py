@@ -49,4 +49,5 @@ def google_search(query, page = 0):
         return resultsDict
     except Exception as e:
         print("Error: " + str(e))
+        return []
 
