@@ -48,8 +48,10 @@ def google_search(query, page=0):
                 print(f"Error retrieving description: {str(e)}")
 
             descriptions.append(description)
-
-        results_dict = [{"title": titles[i], "description": descriptions[i], "link": links[i]} for i in range(len(descriptions)) if links[i].startswith("http")]
+        results_dict = []
+        for i in range(len(descriptions)):
+            if(links[i].startswith("http"))
+            results_dict.append({"title": titles[i], "description": descriptions[i], "link": links[i]})
         return results_dict
 
     except requests.RequestException as e:
