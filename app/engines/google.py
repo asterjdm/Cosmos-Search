@@ -2,15 +2,6 @@ import app.utils as utils
 import requests
 from bs4 import BeautifulSoup
 
-class GoogleSearchError(Exception):
-    pass
-
-class GoogleRequestError(GoogleSearchError):
-    pass
-
-class GoogleParsingError(GoogleSearchError):
-    pass
-
 def google_search(query, page=0):
     try:
         url_encode_query = utils.encode_url(query)
@@ -20,17 +11,17 @@ def google_search(query, page=0):
         with requests.Session() as s:
             s.post(url, headers=headers)
             response = s.get(url, headers=headers)
-            response.raise_for_status()  
+            response.raise_for_status()  # Raise an exception for non-successful responses
 
         soup = BeautifulSoup(response.text, 'html.parser')
 
         links_container = soup.find("div", {"id": "search"})
         if links_container is None:
-            raise GoogleParsingError("Failed to find links container in the HTML")
+            return {"error": "Failed to find links container in the HTML"}
 
         link_containers = links_container.find_all("div", {"class": "g"})
         if not link_containers:
-            raise GoogleParsingError("Failed to find link containers in the HTML")
+            return {"error": "Failed to find link containers in the HTML"}
 
         descriptions_parents = soup.find_all("div", {"data-sncf": "1"})
 
@@ -62,10 +53,8 @@ def google_search(query, page=0):
         return results_dict
 
     except requests.RequestException as e:
-        raise GoogleRequestError(f"Error making the HTTP request: {str(e)}")
-    except GoogleSearchError as e:
-        raise e
+        return {"error": f"Error making the HTTP request: {str(e)}"}
     except Exception as e:
-        raise GoogleParsingError(f"Error occurred: {str(e)}")
+        return {"error": f"Error occurred: {str(e)}"}
 
-    return [] 
+    return {"error": "Unknown error occurred"}  # Return an error dictionary in case of unknown errors

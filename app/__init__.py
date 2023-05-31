@@ -23,6 +23,8 @@ def search():
         else:
             wiki = []
         results = google_search(query, page=actuPage)
+        if("error" in results.keys()) :
+            return results
         next_url = "/search?query=%s&page=%d" % (query, actuPage+1)
         return render_template("index.html", results=results, query=query, info=wiki, next_url=next_url, isSearch=True)
 
