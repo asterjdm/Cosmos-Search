@@ -11,7 +11,11 @@
     title="Cosmos"
     href="{{ url_for('static', filename='opensearch.xml') }}" />
 
-    <title>Cosmos Search</title>
+    {% if isSearch %}
+        <title>{{query}} - Cosmos Search</title>
+    {% else %}
+        <title>Cosmos Search</title>
+    {% endif %}
     <meta name="description" content="Privacy friendly beautiful metasearch engine.">
     <meta name="keywords" content="Search Engine, Metasearch engine, privacy, search, cosmos">
     <meta name="author" content="Asterjdm">
