@@ -13,29 +13,32 @@ def google_search(query, page = 0):
     soup = BeautifulSoup(response.text, 'html.parser')
 
     linksContainer = soup.find("div", {"id": "search"})
-    linksContainers = linksContainer.find_all("div", {"class": "g"})
+    
     links = []
     titles = []
-    for a in linksContainers:
-        linkTag = a.find("a", href=True)
-        url = linkTag.get("href")
-        titleTag = linkTag.find("h3")
-        if titleTag:
-            title = titleTag.getText()
-        else:
-            title = "No title"
-        links.append(url)
-        titles.append(title)
-
-
-
-    descriptionsParents = soup.find_all("div", {"data-sncf": "1"})
     descriptions = []
-    for desc in descriptionsParents:
-        try:
-            descriptions.append(desc.find("div").find("span").text)
-        except:
-            descriptions.append("No description")
+    if type(linksContainer) != None.__class__:
+        linksContainers = linksContainer.find_all("div", {"class": "g"})
+
+        for a in linksContainers:
+            linkTag = a.find("a", href=True)
+            url = linkTag.get("href")
+            titleTag = linkTag.find("h3")
+            if titleTag:
+                title = titleTag.getText()
+            else:
+                title = "No title"
+            links.append(url)
+            titles.append(title)
+            descriptionsParents = soup.find_all("div", {"data-sncf": "1"})
+
+            for desc in descriptionsParents:
+                try:
+                    descriptions.append(desc.find("div").find("span").text)
+                except:
+                    descriptions.append("No description")            
+
+
 
     resultsDict = []
     for i in range(0, len(descriptions)):
