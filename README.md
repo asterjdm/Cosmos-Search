@@ -32,3 +32,6 @@ pip install -r requirements.txt
 flask run
 ```
 ### You can now test the app at [localhost:5000](http://localhost:5000)
+
+
+[![Star History Chart](https://api.star-history.com/svg?repos=asterjdm/cosmos-search&type=Date)](https://star-history.com/#bytebase/star-history&Date)
