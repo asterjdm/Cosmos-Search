@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+    <ShortName>Cosmos</ShortName>
+    <LongName>Cosmos Search</LongName>
+    <Description>Privacy friendly beautiful metasearch engine.</Description>
+    <InputEncoding>UTF-8</InputEncoding>
+    <Url method="get" rel="results" type="text/html" template="https://cosmosearch.vercel.app/search/?query={searchTerms}" />
+</OpenSearchDescription>

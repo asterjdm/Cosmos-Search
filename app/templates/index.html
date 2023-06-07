@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'style/style.css') }}">
+    <script defer src="{{ url_for('static', filename= 'script/preview.js') }}"></script>
+    <link
+    rel="search"
+    type="application/opensearchdescription+xml"
+    title="Cosmos"
+    href="{{ url_for('static', filename='opensearch.xml') }}" />
+
+    {% if isSearch %}
+        <title>{{query}} - Cosmos Search</title>
+    {% else %}
+        <title>Cosmos Search</title>
+    {% endif %}
+    <meta name="description" content="Privacy friendly beautiful metasearch engine.">
+    <meta name="keywords" content="Search Engine, Metasearch engine, privacy, search, cosmos">
+    <meta name="author" content="Asterjdm">
+</head>
+<body>
+    <div class="all">
+        <header>
+            <a target="_blank" href="https://github.com/asterjdm/Cosmos-Search">
+                <img src="{{ url_for('static', filename='images/github.png') }}" class="githubImg" width="50" height="50" alt="GitHub">
+            </a>
+        </header>
+    <div class="main">
+        <a class="home-link" href="/">
+            <h1 class="main-title">Cosmos Search</h1>
+        </a>
+        <form method="get" action="/search/" class="searchForm">
+            <input autofocus autocomplete="off" placeholder="Search the Cosmos !" value="{{query}}" class="searchInput" type="text" name="query">
+            <button class="searchButton" type="submit">Search</button>
+        </form>
+        <div class="results">
+            <div class="info">
+                {% for i in info %}
+                    <a class="info-link" href="{{i["url"]}}">
+                        <div class="inforesult">
+                            <div class="info-image">
+                                <img src="{{i["image"]}}" alt="img" width="200">
+                            </div>
+                            <h2 class="infoTitle">{{i["title"]}}</h2>
+                            <p class="infoDescription">{{i["summary"]}}</p>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+            {% for result in results %}
+                <a id="result-link" class="result-link" href="{{result['link']}}">
+                    <div class="searchresult">
+                            <h2 class="resultTitle">{{result['title']}}</h2>
+                            <p class="resultLink">{{result['link']}}</p>
+                            <p class="resultDescription">{{result['description']}}</p>
+                    </div>
+                </a>
+            {% endfor %}
+
+
+        </div>
+        {% if isSearch %}
+        <a class="next-page-link" href="{{next_url}}">
+            <div class="next-page">
+                <p class="next-text" >Next</p>
+            </div>
+        </a>
+        {% endif %}
+
+        {% if not isSearch %}
+        <div class="listInfo">
+            <ul>
+                <li>No personalized results</li>
+                <li>No tracking</li>
+                <li>No ads</li>
+                <li>No partnership with other search engines (like google)</li>
+            </ul>
+            <h3><b><i>Just search !</i></b></h3>
+        </div>
+        {% endif %}
+        <p class="description"><i>Privacy friendly, beautiful metasearch engine...</i></p>
+    </div>
+</body>
+</html>
