@@ -30,11 +30,13 @@
                 <p class="container-description">{{i["summary"]}}</p>
             </div>
             {% endfor %}
-        	<div class="search-container">
-        		<h1 class="container-title">This is a super cool title</h1>
-        		<p class="container-link">https://rmbi.ch</p>
-        		<p class="container-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quia ex eius saepe maxime, voluptate ducimus eveniet deleniti illum officiis doloremque nobis cum tempora, consequuntur omnis aspernatur ea ullam a.</p>
-        	</div>
+            {% for result in results %}
+            <div class="search-container">
+                <h1 class="container-title">{{result['title']}}</h1>
+                <p class="container-link">{{result['link']}}</p>
+                <p class="container-description">{{result['description']}}</p>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </body>
