@@ -1,324 +1,148 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 
 * {
 
     margin: 0;
     border: 0;
     padding: 0;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
 
 }
 
 :root {
 
-    --text-color: #E8AA42;
-    --segondary-text-color: #000000;
-    --content-color: #F8F1F1;
-    --hover-color: #E57C23;
-    --background-color: #025464
+    --background-color: #2B2A4C;
+    --border-color: #EA906C;
+    --content-color: #EEE2DE;
 
 }
 
 body {
-    
-    background-color: var(--background-color);
+
+   background: var(--background-color); 
 
 }
 
 .main {
 
-    margin-top: 30px;
+    top: 50%;
     left: 50%;
     position: absolute;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
 
-}
-
-/*Search style*/
-
-.home-link {
-    text-decoration: none;
 }
 
 .main-title {
 
-    font-size: 50px;
+    text-transform: uppercase;
     text-align: center;
-    color: var(--text-color);
-
-}
-
-.ifrm{
-    position: static;
-    display: none;
-}
-
-.searchForm{
-
-    margin-top: 25px;
-    margin-bottom: 50px;
-    display: flex;
-
-}
-
-.searchInput {
-
-    width: 720px;
-    height: 40px;
-    padding: 5px;
-    border-radius: 15px;
-    border: 3px solid var(--text-color);
-    color: var(--segondary-text-color);
-    background-color: var(--content-color);
-    transition: 0.3s ease-in-out;
-    
-}
-
-.searchButton{
-
-    margin-left: 10px;
-    width: 80px;
-    height: 55px;
-    border: 3px solid var(--text-color);
-    border-radius: 15px;
-    background-color: var(--content-color);
-    transition: 0.3s ease-in-out;
-
-}
-
-.searchButton:hover{
-    
-    border-color: var(--hover-color);
-    color: var(--content-color);    
-    background: transparent;
-
-}
-
-.searchInput:focus, .searchInput:hover {
-
-    border-color: var(--hover-color);
-    outline: none;
+    font-size: 80px;
     color: var(--content-color);
-    background: transparent;
- 
+
+
 }
 
-/*Result style*/
+.inter {
 
-.searchresult {
-        
-    margin: 10px;
-    border: 3px solid var(--text-color);
-    padding: 5px;
-    height: 110px;
-    width: 800px;
-    border-radius: 30px;
-    text-align: center;
-    color: var(--segondary-text-color);
+    border: 2px solid var(--border-color);
+    border-radius: 50px;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: var(--content-color);
+
+}
+
+.search-img {
+
+    height: 20px;
+
+}
+
+.search-input {
+
+    width: 80%;
     transition: 0.3s ease-in-out;
-    overflow-y: hidden;
-}
-
-.listInfo{
-    color: azure;
-    margin-left: 30%;
-    margin-bottom: 15px;
-}
-
-.inforesult {
-
-    margin: 10px;
-    border: 3px solid var(--text-color);
-    padding: 5px;
-    padding-bottom: 10px;
-    height: fit-content;
-    width: 800px;
-    border-radius: 30px;
-    text-align: center;
-    color: var(--segondary-text-color);
+    height: 60%;
     background: var(--content-color);
-    transition: 0.3s ease-in-out;
-}
-
-.result-link, .info-link {
-    color: var(--segondary-text-color);
-    text-decoration: none;
-}
-
-.next-page{
-
-    text-align: center;
-    margin-left: 50%;
-    width: 60px;
-    height: 47px;
-    border: 3px solid var(--text-color);
-    border-radius: 15px;
-    background-color: var(--content-color);
-    transition: 0.3s ease-in-out;
+    margin-left: 10px;
+    margin-right: 10px;
 
 }
 
-.next-page:hover{
-        
-    border-color: var(--hover-color);
-    color: var(--content-color);    
-    background: transparent;
+.search-input:focus {
+
+    outline: none;
 
 }
 
+.send-button {
 
-.next-text{
-    padding-top: 10px;
-}
+    position: relative;
+    border: 0;
+    background: none;
+    margin-left: 10px;
+    margin-right: 10px;
 
-.next-page-link{
-    text-decoration: none;
-    color: black;
-}
-
-.githubImg{
-
-    margin-top: 15px;
-    margin-left: 15px;
-    transition: transform 0.5s;
 
 }
 
-.description{
-    color: azure;
-    margin-bottom: 20px;
+.send-img {
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    height: 20px;
+    cursor: pointer;
+
 }
 
-.githubImg:hover{
+.line {
 
-    transform: scale(1.3);
+    margin-top: 10px;
+    border-radius: 10px;
+    width: 100%;
+    height: 3px;
+    background: var(--content-color);
 
 }
 
-.searchresult, .inforesult{
-    transition: transform 0.5s;
+.privacy-text {
+
+    color: var(--content-color);
+
 }
 
-.searchresult:hover, .inforesult:hover{
-    transform: scale(1.03);
-}
+@media screen and (max-width: 700px) {
 
-/*Responsive for small screens*/
+    .main-title {
 
-@media screen and (max-width: 800px) {
-
-    .searchForm {
-
-        margin-bottom: 30px;
+        font-size: 50px;
 
     }
 
-    .searchInput {
+}
 
-        margin-left: 10px;
-        width: 400px;
-        height: 30px;
+@media screen and (max-width: 450px) {
 
-    }
+    .main-title {
 
-    .searchButton, .next-page {
-
-        width: 60px;
-        height: 47px;
-
+        font-size: 35px;
 
     }
 
-    .searchresult, .inforesult {
+    .search-input {
 
-        width: 470px;
-
-    }
-
-    .resultTitle {
-
-        margin-top: 10px;
-        font-size: 15px;
+        width: 68%;
 
     }
 
-    .resultLink, .resultDescription, .infoLink, .infoDescription {
+    .privacy-text {
 
         font-size: 10px;
-
-    }
-
-    .searchInput:hover, .searchInput:focus, .searchButton:hover, .searchresult:hover, .inforesult:hover {
-
-        border-color: var(--text-color);
-        color: var(--segondary-text-color);
-        background: var(--content-color);
-        transform: scale(1.0);
-
-    }
-
-}
-
-@media screen and (max-width: 510px) {
-
-    .searchInput {
-
-        width: 250px;
-
-    }
-
-    .searchButton, .next-page {
-
-
-        width: 50px;
-        font-size: 10px;
-
-    }
-
-    .searchresult, .inforesult {
-
-        width: 310px;
-
-    }
-
-    .resultTitle {
-
-        font-size: 12px;
-        margin-bottom: 10px;
-
-
-    }
-
-    .resultLink, .resultDescription, .infoLink, .infoDescription {
-
-        font-size: 8px;
-
-    }
-
-}
-
-@media screen and (max-width: 360px) {
-
-    .searchInput {
-
-        width: 200px;
-        height: 25px;
-
-    }
-
-    .searchButton, .next-page {
-
-        margin-left: 7px;
-        width: 40px;
-        height: 42px;
-        font-size: 8px;
-
-    }
-
-    .searchresult, .inforesult {
-
-        width: 247px;
 
     }
 
