@@ -30,7 +30,7 @@ def search():
             return {"error": results[0]["error"]}
         
         next_url = url_for('search', query=query, page=actuPage+1)
-        return render_template("index.html", results=results, query=query, info=wiki, next_url=next_url, isSearch=True)
+        return render_template("search.html", results=results, query=query, info=wiki, next_url=next_url, isSearch=True)
 
     else:
         return redirect(url_for('index'))
