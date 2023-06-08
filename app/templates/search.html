@@ -22,20 +22,24 @@
         </div>
         <div class="search">
             {% for i in info %}
-            <div class="wikipedia">
-                <div class="inter-container">
-                    <img src="{{i["image"]}}" alt="" width="200">
-                    <h1 class="wikipedia-title">{{i["title"]}}</h1>
+            <a href="{{i["url"]}}">
+                <div class="wikipedia">
+                    <div class="inter-container">
+                        <img src="{{i["image"]}}" alt="" width="200">
+                        <h1 class="wikipedia-title">{{i["title"]}}</h1>
+                    </div>
+                    <p class="container-description">{{i["summary"]}}</p>
                 </div>
-                <p class="container-description">{{i["summary"]}}</p>
-            </div>
+            </a>
             {% endfor %}
             {% for result in results %}
-            <div class="search-container">
-                <h1 class="container-title">{{result['title']}}</h1>
-                <p class="container-link">{{result['link']}}</p>
-                <p class="container-description">{{result['description']}}</p>
-            </div>
+            <a href="{{result['link']}}">
+                <div class="search-container">
+                    <h1 class="container-title">{{result['title']}}</h1>
+                    <p class="container-link">{{result['link']}}</p>
+                    <p class="container-description">{{result['description']}}</p>
+                </div>
+            </a>
             {% endfor %}
         </div>
     </div>
