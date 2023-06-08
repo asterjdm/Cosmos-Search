@@ -21,13 +21,15 @@
             </form>
         </div>
         <div class="search">
-	        <div class="wikipedia">
-	        	<div class="inter-container">
-	        		<img src="../img/google.jpg" alt="wikipedia Image" class="wiki-img">
-	        		<h1 class="wikipedia-title">Google</h1>
-	        	</div>
-	        	<p class="container-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quia ex eius saepe maxime, voluptate ducimus eveniet deleniti illum officiis doloremque nobis cum tempora, consequuntur omnis aspernatur ea ullam a.</p>
-	        </div>
+            {% for i in info %}
+            <div class="wikipedia">
+                <div class="inter-container">
+                    <img src="{{i["image"]}}" alt="" width="200">
+                    <h1 class="wikipedia-title">{{i["title"]}}</h1>
+                </div>
+                <p class="container-description">{{i["summary"]}}</p>
+            </div>
+            {% endfor %}
         	<div class="search-container">
         		<h1 class="container-title">This is a super cool title</h1>
         		<p class="container-link">https://rmbi.ch</p>
