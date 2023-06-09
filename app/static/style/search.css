@@ -80,6 +80,8 @@ a {
     margin-top: 10px;
     margin-bottom: 10px;
     color: var(--content-color);
+    overflow-x: auto;
+    scrollbar-width: none;
 }
 .supra-content {
 }
