@@ -102,7 +102,8 @@ a {
 }
 .wiki-img {
     border-radius: 10px;
-    height: 120px;
+    height: 160px;
+    width: 160px;
 }
 @media screen and (max-width: 800px) {
     .main-search {
