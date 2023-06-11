@@ -127,6 +127,9 @@ a {
     }
     .inter {
         width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+        transform: translate(-10px);
     }
     .search-input {
         width: 85%;
