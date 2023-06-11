@@ -10,6 +10,7 @@
     --container-color: #363559;
     --border-color: #EA906C;
     --content-color: #EEE2DE;
+    --hover-color: #444268;
 }
 body {
    background: var(--background-color);
@@ -82,6 +83,10 @@ a {
     color: var(--content-color);
     overflow-x: auto;
     scrollbar-width: none;
+    transition: 0.3s ease-in-out;
+}
+.search-container:hover, .wikipedia:hover {
+    background: var(--hover-color);
 }
 .supra-content {
 }
@@ -118,6 +123,9 @@ a {
     }
     .search-input {
         width: 85%;
+    }
+    .container:hover, .wikipedia:hover {
+        background: var(--container-color);
     }
 }
 
