@@ -22,7 +22,6 @@ a {
 }
 .main-search {
     margin-top: 10px;
-    margin-left: -10px;
     display: flex;
     justify-content: left;
 }
@@ -74,7 +73,6 @@ a {
 .search-container, .wikipedia {
     border-radius: 10px;
     padding: 10px;
-    transform: translate(-10px);
     background: var(--container-color);
     width: 100%;
     height: auto;
@@ -110,6 +108,16 @@ a {
     height: 160px;
     width: 160px;
 }
+.next-button {
+    display: flex;
+    justify-content: center;
+}
+.next-link {
+    font-size: 30px;
+    text-decoration: none;
+    color: var(--content-color);
+    text-transform: uppercase;
+}
 @media screen and (max-width: 800px) {
     .main-search {
         margin-left: -20px;
@@ -124,7 +132,7 @@ a {
     .search-input {
         width: 85%;
     }
-    .container:hover, .wikipedia:hover {
+    .search-container:hover, .wikipedia:hover {
         background: var(--container-color);
     }
 }
