@@ -120,7 +120,6 @@ a {
 }
 @media screen and (max-width: 800px) {
     .main-search {
-        margin-left: -20px;
         display: block;
     }
     .main-title {
