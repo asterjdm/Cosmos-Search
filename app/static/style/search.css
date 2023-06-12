@@ -24,6 +24,7 @@ a {
     margin-top: 10px;
     display: flex;
     justify-content: left;
+    transform: translate(-10px);
 }
 .main-title {
     text-transform: uppercase;
@@ -82,6 +83,7 @@ a {
     overflow-x: auto;
     scrollbar-width: none;
     transition: 0.3s ease-in-out;
+    transform: translate(-10px);
 }
 .search-container:hover, .wikipedia:hover {
     background: var(--hover-color);
@@ -106,7 +108,7 @@ a {
 .wiki-img {
     border-radius: 10px;
     height: 160px;
-    width: 160px;
+    width: auto;
 }
 .next-button {
     display: flex;
