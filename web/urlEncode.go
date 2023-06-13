@@ -4,6 +4,6 @@ import (
 	"net/url"
 )
 
-function EncodeUrl(toEncode string) string{
+func UrlEncode(toEncode string) string{
 	return url.QueryEscape(toEncode)
 }

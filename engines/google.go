@@ -6,8 +6,8 @@ import (
 )
 
 func Search(query string) ([]map[string]string, error) {
-
-	var url string = "https://google.com/search?q=" + query
+	encodedQuery := web.urlEncode(query)
+	var url string = "https://google.com/search?q=" + encodedQuery
 	var results = []map[string]string{}
 
 	html, err := web.GetHtml(url)
