@@ -8,26 +8,35 @@ import(
 	"example.com/Cosmos-Search/web"
 )
 
-func Search(query string) {
-	var url string = "https://duckduckgo.com?q=" + query
-	/*var results = []struct{
+func Search(query string) ([]struct {
+	title       string
+	link        string
+	description string
+}, error) {
+
+	var url string = "https://google.com/search?q=" + query
+	var results = []struct{
 		title string
 		link string
 		description string
-	}{}*/
+	}{}
+
+
 	html, err := web.GetHtml(url)
 	if err != nil {
-		//return results, err
+		return results, err
 	}
 	doc, err := goquery.NewDocumentFromReader(html)
 	if err != nil {
-        log.Fatal(err)
+        return results, err
     }
 
-	title := doc.Find("title").Text()
-    fmt.Println(title)
+	doc.Find("#search").Each(func(i int, s *goquery.Selection) {
+
+	})
+    //fmt.Println(title)
 }
 
 func main() {
-	Search("hey")
+	Search("github")
 }

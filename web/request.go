@@ -10,7 +10,7 @@ import (
 
 func GetHtml(url string) (*bytes.Reader, error) {
 	var client = &http.Client{}
-	const USER_AGENT = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/113.0"
+	const USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
 	req, err := http.NewRequest("GET", url, nil)
 	req.Header.Set("User-Agent", USER_AGENT)
 	if err != nil {
