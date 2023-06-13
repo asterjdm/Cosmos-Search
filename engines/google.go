@@ -1,9 +1,6 @@
-package main
+package engines
 
 import (
-	"fmt"
-	"log"
-
 	"github.com/PuerkitoBio/goquery"
 	"example.com/Cosmos-Search/web"
 )
