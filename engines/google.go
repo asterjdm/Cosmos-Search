@@ -24,8 +24,10 @@ func Search(query string) ([]map[string]string, error) {
 
 	doc.Find("#search").
 		Children().First().
-		Children().First().
+		Children().Last().
+		Children().Last().
 		Each(func(i int, s *goquery.Selection) {
+			fmt.Println(s.Attr("class"))
 			title := s.Find("h3").Text()
 			link, _ := s.Find("a").Attr("href")
 			description := s.Find(".VwiC3b").Children().Last().Text()
