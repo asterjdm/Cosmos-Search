@@ -9,6 +9,7 @@ import (
 )
 
 func main() {
+	
     http.Handle("/", http.FileServer(http.Dir("./static/home")))
 
     log.Fatal(http.ListenAndServe(":5000", nil))

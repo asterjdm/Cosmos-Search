@@ -22,12 +22,7 @@ func Search(query string) ([]map[string]string, error) {
 		return results, err
 	}
 
-	doc.Find("#search").
-		Children().First().
-		Children().Last().
-		Children().Last().
-		Each(func(i int, s *goquery.Selection) {
-			fmt.Println(s.Attr("class"))
+	doc.Find(".kvH3mc").Each(func(i int, s *goquery.Selection) {
 			title := s.Find("h3").Text()
 			link, _ := s.Find("a").Attr("href")
 			description := s.Find(".VwiC3b").Children().Last().Text()
@@ -43,16 +38,3 @@ func Search(query string) ([]map[string]string, error) {
 	return results, nil
 }
 
-func main() {
-	results, err := Search("github")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	for _, result := range results {
-		fmt.Println("Title:", result["title"])
-		fmt.Println("Link:", result["link"])
-		fmt.Println("Description:", result["description"])
-		fmt.Println()
-	}
-}
