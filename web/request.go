@@ -13,7 +13,7 @@ func getHtml(url string) []byte {
 	req, err := http.NewRequest("GET", url, nil)
 	req.Header.Set("User-Agent", USER_AGENT)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 	resp, err := client.Do(req)
 
@@ -23,12 +23,13 @@ func getHtml(url string) []byte {
 	defer resp.Body.Close()
 
 	if resp.StatusCode != 200 {
-        log.Fatalf("failed to fetch data: %d %s", resp.StatusCode, resp.Status)
+		err := fmt.Sprintf("failed to fetch data: %d %s", resp.StatusCode, resp.Status)
+        return nil, err
     }
 
 	html, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	fmt.Printf("%s\n", html)
