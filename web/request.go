@@ -4,10 +4,11 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"log"
+	"errors"
+	"bytes"
 )
 
-func getHtml(url string) []byte {
+func GetHtml(url string) (*bytes.Reader, error) {
 	var client = &http.Client{}
 	const USER_AGENT = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/113.0"
 	req, err := http.NewRequest("GET", url, nil)
@@ -18,12 +19,12 @@ func getHtml(url string) []byte {
 	resp, err := client.Do(req)
 
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != 200 {
-		err := fmt.Sprintf("failed to fetch data: %d %s", resp.StatusCode, resp.Status)
+		err := errors.New(fmt.Sprintf("failed to fetch data: %d %s", resp.StatusCode, resp.Status))
         return nil, err
     }
 
@@ -32,7 +33,7 @@ func getHtml(url string) []byte {
 		return nil, err
 	}
 
-	fmt.Printf("%s\n", html)
-	return html
+	reader := bytes.NewReader(html)
+	return reader, nil
 }
 

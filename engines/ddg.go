@@ -1,4 +1,4 @@
-package engines
+package main
 
 import(
 	"fmt"
@@ -8,17 +8,26 @@ import(
 	"example.com/Cosmos-Search/web"
 )
 
-func search(query string) {
+func Search(query string) {
 	var url string = "https://duckduckgo.com?q=" + query
-
-	resp := web.getHtml(url)
-	doc, err := goquery.NewDocumentFromReader(resp)
+	/*var results = []struct{
+		title string
+		link string
+		description string
+	}{}*/
+	html, err := web.GetHtml(url)
+	if err != nil {
+		//return results, err
+	}
+	doc, err := goquery.NewDocumentFromReader(html)
 	if err != nil {
         log.Fatal(err)
     }
 
-	title := doc.Find("a").Text()
+	title := doc.Find("title").Text()
     fmt.Println(title)
 }
 
-
+func main() {
+	Search("hey")
+}
