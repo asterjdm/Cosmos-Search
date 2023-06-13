@@ -8,7 +8,7 @@ import(
 )
 
 func search(query string) {
-	var url string = "https://duckduckgo.com/search?q=" + query
+	var url string = "https://duckduckgo.com?q=" + query
 	var client = &http.Client{}
 	const USER_AGENT = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/113.0"
 	req, err := http.NewRequest("GET", url, nil)
@@ -32,11 +32,11 @@ func search(query string) {
         log.Fatal(err)
     }
 
-	title := doc.Find("title").Text()
+	title := doc.Find("a").Text()
     fmt.Println(title)
 }
 
 
 func main() {
-	search("ss")
+	search("haha")
 }
