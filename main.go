@@ -72,6 +72,7 @@ func search(w http.ResponseWriter, r *http.Request) {
 		Results []map[string]string
 		Query   string
 		NextPageUrl string
+		Info map[string]string
 	}{
 		Results: results,
 		Query:   query,
