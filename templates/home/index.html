@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+    <html lang=en>
+    <head>
+        <meta charset=UTF-8>
+        <meta name=viewport content="width=device-width, initial-scale=1.0">>
+        <title>Cosmos - Search</title>
+        <link
+        rel="search"
+        type="application/opensearchdescription+xml"
+        title="Cosmos"
+        href="/static/opensearch.xml" />
+        <meta name="description" content="Privacy friendly beautiful metasearch engine.">
+        <meta name="keywords" content="Search Engine, Metasearch engine, privacy, search, cosmos">
+        <meta name="author" content="Asterjdm">
+    
+        <link rel="stylesheet" href="/static/style/home.css">
+    </head>
+
+    <body>
+        <div class="main">
+            <h1 class="main-title">cosmosearch</h1>   
+            <form method="get" action="/search/" class="searchForm"> 
+                <div class="inter">
+                    <img src="/static/images/search.png" alt="Search icon" class="search-img">
+                        <input name="q" type="text" class="search-input" placeholder="Enter text to search">
+                    <button class="send-button" type="submit"> 
+                        <img src="/static/images/send.png" alt="Send icon" class="send-img">
+                    </button>
+                </div>
+            </form>
+            <div class="line"></div>
+            <p class="privacy-text">Privacy friendly, beautiful metasearch engine...</p>
+        </div>
+    </body>
+</html>
