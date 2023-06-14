@@ -61,6 +61,13 @@ func search(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	
+	wikiInfo, err := engines.GetWiki(query)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	
 	data := struct {
 		Results []map[string]string
 		Query   string
