@@ -22,7 +22,6 @@ func getWiki(query string) (map[string]string, error) {
 	if err != nil {
 		return nil, err
 	}
-	images, err := page.GetImagesURL()
 
 
 	wikiInfo := map[string]string{

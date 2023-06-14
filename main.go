@@ -67,7 +67,7 @@ func search(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	
+
 	data := struct {
 		Results []map[string]string
 		Query   string
