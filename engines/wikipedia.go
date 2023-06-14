@@ -1,9 +1,8 @@
-package main
+package engines
 
 import(
 	"github.com/trietmn/go-wiki"
 	"fmt"
-	"strings"
 )
 
 func getWiki(query string) (map[string]string, error) {
@@ -23,17 +22,11 @@ func getWiki(query string) (map[string]string, error) {
 	if err != nil {
 		return nil, err
 	}
-	image, err := page.GetImagesURL()
-	fmt.Println(image)
+	images, err := page.GetImagesURL()
+
+
 	wikiInfo := map[string]string{
 		"Summary": summary,
-		"Image": image[0],
 	}
 	return wikiInfo, nil
-}
-
-func main() {
-	wikiInfo, _ := getWiki("google")
-	fmt.Println(wikiInfo["Summary"])
-	fmt.Println(wikiInfo["Image"])
 }
