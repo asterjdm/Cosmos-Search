@@ -38,6 +38,5 @@ func GetWiki(query string) (map[string]interface{}, error) {
 	wikiInfo["Title"] = title
 	wikiInfo["Found"] = true
 	wikiInfo["Summary"] = summary
-	fmt.Println("4")
 	return wikiInfo, nil
 }
