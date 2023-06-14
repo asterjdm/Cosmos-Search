@@ -1,10 +1,8 @@
 package main
 
 import (
-    _"fmt"
-    _"html"
-    "log"
-    "net/http"
+	"log"
+	"net/http"
 	"html/template"
 	"example.com/Cosmos-Search/engines"
 )
@@ -15,10 +13,13 @@ func main() {
 		log.Fatal(err)
 	}
 	
-    http.HandleFunc("/", home)
+	http.HandleFunc("/", home)
 
-    log.Fatal(http.ListenAndServe(":5000", nil))
+	// Serve les fichiers statiques depuis le répertoire "static"
+	fs := http.FileServer(http.Dir("static"))
+	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
+	log.Fatal(http.ListenAndServe(":5000", nil))
 }
 
 func home(w http.ResponseWriter, r *http.Request){
@@ -28,13 +29,7 @@ func home(w http.ResponseWriter, r *http.Request){
 		return
 	}
 
-	data := struct {
-		Title string
-	}{
-		Title: "Mon titre de page",
-	}
-
-	err = tmpl.Execute(w, data)
+	err = tmpl.Execute(w, nil)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
