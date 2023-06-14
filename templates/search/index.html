@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="/static/style/search.css">
-	<title>{{.Query}} - CosmosSearch</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style/search.css">
+    <title>{{.Query}} - CosmosSearch</title>
 </head>
 <body>
-	<div class="main">
-		<div class="main-search">
+    <div class="main">
+        <div class="main-search">
             <a href="/">
                 <h1 class="main-title">cosmosearch</h1>   
             </a>
             <form method="get" action="/search/" class="searchForm"> 
                 <div class="inter">
                     <img src="/static/images/search.png" alt="Search icon" class="search-img">
-                        <input value="{{.Query}}" name="q" type="text" class="search-input" placeholder="Enter text to search">
+                    <input value="{{.Query}}" name="q" type="text" class="search-input" placeholder="Enter text to search">
                     <button class="send-button" type="submit"> 
                         <img src="/static/images/search.png" alt="Send icon" class="send-img">
                     </button>
@@ -23,6 +23,19 @@
             </form>
         </div>
         <div class="search">
+            {{if .FoundInfo}}
+                <a href="{{.Info.Link}}">
+                    <div class="wikipedia">
+                        <div class="supra-content">
+                            <div class="inter-container">
+                                <img src="" alt="" width="200" class="wiki-img">
+                                <h1 class="wikipedia-title">INFO</h1>
+                            </div>
+                            <p class="container-description">{{index .Info "Summary"}}</p>
+                        </div>
+                    </div>
+                </a>
+            {{end}}
 
             {{range .Results}}
             <a href="{{.link}}">

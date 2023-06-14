@@ -62,6 +62,7 @@ func search(w http.ResponseWriter, r *http.Request) {
 	}
 
 	wikiInfo, err := engines.GetWiki(query)
+
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
