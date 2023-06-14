@@ -48,7 +48,7 @@ func search(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	var next_page_url string = fmt.Sprintf("/search?q=%s&page=%d", query, page + 1)
+	var next_page_url string = fmt.Sprintf("/search?q=%s&page=%d", query, page+1)
 	results, err := engines.Search(query, &page)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -60,26 +60,31 @@ func search(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	
+
 	wikiInfo, err := engines.GetWiki(query)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
+	FoundInfo, ok := wikiInfo["Found"].(bool)
+	if !ok {
+		http.Error(w, "Erreur lors de la conversion du champ Found en booléen", http.StatusInternalServerError)
+		return
+	}
 
 	data := struct {
-		Results []map[string]string
-		Query   string
+		Results     []map[string]string
+		Query       string
 		NextPageUrl string
-		Info map[string]interface{}
-		FoundInfo bool
+		Info        map[string]interface{}
+		FoundInfo   bool
 	}{
-		Results: results,
-		Query:   query,
+		Results:     results,
+		Query:       query,
 		NextPageUrl: next_page_url,
-		Info: wikiInfo,
-		FoundInfo: wikiInfo["Found"],
+		Info:        wikiInfo,
+		FoundInfo:   FoundInfo,
 	}
 
 	err = tmpl.Execute(w, data)
