@@ -4,7 +4,7 @@ import (
 	"github.com/trietmn/go-wiki"
 )
 
-func getWiki(query string) (map[string]interface{}, error) {
+func GetWiki(query string) (map[string]interface{}, error) {
 	searchResult, _, err := gowiki.Search(query, 1, true)
 	if err != nil {
 		return nil, err
@@ -18,7 +18,7 @@ func getWiki(query string) (map[string]interface{}, error) {
 		return wikiInfo, nil
 	}
 
-	page, err := gowiki.GetPage(searchResult[0], -1, false, true)
+	//page, err := gowiki.GetPage(searchResult[0], -1, false, true)
 	if err != nil {
 		return nil, err
 	}

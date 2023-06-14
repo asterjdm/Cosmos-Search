@@ -72,11 +72,14 @@ func search(w http.ResponseWriter, r *http.Request) {
 		Results []map[string]string
 		Query   string
 		NextPageUrl string
-		Info map[string]string
+		Info map[string]interface{}
+		FoundInfo bool
 	}{
 		Results: results,
 		Query:   query,
 		NextPageUrl: next_page_url,
+		Info: wikiInfo,
+		FoundInfo: wikiInfo["Found"],
 	}
 
 	err = tmpl.Execute(w, data)
