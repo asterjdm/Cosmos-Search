@@ -7,12 +7,7 @@ import (
 	"example.com/Cosmos-Search/engines"
 )
 
-func main() {
-	_, err := engines.Search("golang programming language")
-	if err != nil {
-		log.Fatal(err)
-	}
-	
+func main() {	
 	http.HandleFunc("/", home)
 	http.HandleFunc("/search/", search)
 
@@ -38,6 +33,15 @@ func home(w http.ResponseWriter, r *http.Request){
 }
 
 func search(w http.ResponseWriter, r *http.Request){
+	queryParams := r.URL.Query()
+	query := queryParams.Get("q")
+	
+	reqults, err := engines.Search(query)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
 	tmpl, err := template.ParseFiles("templates/search/index.html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -45,9 +49,9 @@ func search(w http.ResponseWriter, r *http.Request){
 	}
 
 	data := struct {
-		Title string
+		[]map[string]string
 	}{
-		Title: "Mon titre de page",
+		Results: results,
 	}
 
 	err = tmpl.Execute(w, data)
