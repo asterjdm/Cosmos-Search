@@ -5,9 +5,12 @@ import (
 	"example.com/Cosmos-Search/web"
 )
 
-func Search(query string) ([]map[string]string, error) {
+func Search(query string, page int) ([]map[string]string, error) {
+	if page == nil {
+		page := 0
+	}
 	encodedQuery := web.UrlEncode(query)
-	var url string = "https://google.com/search?q=" + encodedQuery
+	var url string = fmt.Sprintf("https://google.com/search?q=%s&start=%i", encodedQuery, page*10)
 	var results = []map[string]string{}
 
 	html, err := web.GetHtml(url)
