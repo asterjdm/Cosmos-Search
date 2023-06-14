@@ -35,6 +35,7 @@ func home(w http.ResponseWriter, r *http.Request){
 func search(w http.ResponseWriter, r *http.Request){
 	queryParams := r.URL.Query()
 	query := queryParams.Get("q")
+	page := queryParams.Get("page")
 	
 	results, err := engines.Search(query)
 	if err != nil {
