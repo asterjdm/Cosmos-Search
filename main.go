@@ -36,3 +36,23 @@ func home(w http.ResponseWriter, r *http.Request){
 		return
 	}
 }
+
+func search(w http.ResponseWriter, r *http.Request){
+	tmpl, err := template.ParseFiles("templates/search/index.html")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	data := struct {
+		Title string
+	}{
+		Title: "Mon titre de page",
+	}
+
+	err = tmpl.Execute(w, data)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+}
