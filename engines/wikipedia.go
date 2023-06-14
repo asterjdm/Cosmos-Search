@@ -31,9 +31,11 @@ func GetWiki(query string) (map[string]interface{}, error) {
 	}
 
 	link := page.URL
+	title := page.Title
 
 
 	wikiInfo["Link"] = link
+	wikiInfo["Title"] = title
 	wikiInfo["Found"] = true
 	wikiInfo["Summary"] = summary
 	fmt.Println("4")
