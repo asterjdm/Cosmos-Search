@@ -36,7 +36,7 @@ func search(w http.ResponseWriter, r *http.Request){
 	queryParams := r.URL.Query()
 	query := queryParams.Get("q")
 	
-	reqults, err := engines.Search(query)
+	results, err := engines.Search(query)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -49,7 +49,7 @@ func search(w http.ResponseWriter, r *http.Request){
 	}
 
 	data := struct {
-		[]map[string]string
+		Results []map[string]string
 	}{
 		Results: results,
 	}
