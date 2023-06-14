@@ -14,6 +14,7 @@ func main() {
 	}
 	
 	http.HandleFunc("/", home)
+	http.HandleFunc("/search/", search)
 
 	// Serve les fichiers statiques depuis le répertoire "static"
 	fs := http.FileServer(http.Dir("static"))
