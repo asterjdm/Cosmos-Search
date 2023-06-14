@@ -1,4 +1,4 @@
-module example.com/Cosmos-Search
+module github.com/asterjdm/Cosmos-Search
 
 go 1.20
 

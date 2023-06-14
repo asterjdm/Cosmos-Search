@@ -3,7 +3,7 @@ package engines
 import (
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
-	"example.com/Cosmos-Search/web"
+	"github.com/asterjdm/Cosmos-Search"
 )
 
 func Search(query string, page *int) ([]map[string]string, error) {

@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"example.com/Cosmos-Search/engines"
+	"github.com/asterjdm/Cosmos-Search/engines"
 )
 
 func main() {
