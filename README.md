@@ -27,7 +27,7 @@ cd Cosmos-Search
 ```
 ### Run the app :
 ```
-go run main.go 
+go run .
 ```
 ### You can now test the app at [localhost:5000](http://localhost:5000)
 
