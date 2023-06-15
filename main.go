@@ -11,6 +11,9 @@ import (
 )
 
 func main() {
+
+	fmt.Println("Now you can go on https://localhost:5000")
+	
 	http.HandleFunc("/", home)
 	http.HandleFunc("/search/", search)
 
@@ -18,6 +21,9 @@ func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
 	log.Fatal(http.ListenAndServe(":5000", nil))
+	
+
+
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
