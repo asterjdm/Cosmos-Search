@@ -2,7 +2,7 @@ package engines
 
 import (
 	"github.com/trietmn/go-wiki"
-	"fmt"	
+	_"fmt"	
 )
 
 func GetWiki(query string) (map[string]interface{}, error) {
