@@ -15,7 +15,7 @@ To have good search results Cosmos search scrape content of various website like
 
 Without using paid official APIs.
 
-## Run locally
+## Build from source
 ### Install golang :
 ```bash
 sudo snap install go
