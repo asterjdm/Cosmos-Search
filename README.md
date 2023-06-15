@@ -25,11 +25,11 @@ cd Cosmos-Search
 ```
 ### Install requirements :
 ```bash
-pip install -r requirements.txt
+sudo snap install go
 ```
 ### Run the app :
 ```
-flask run
+go run
 ```
 ### You can now test the app at [localhost:5000](http://localhost:5000)
 
