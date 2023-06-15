@@ -18,18 +18,18 @@ To have good search results Cosmos search scrape content of various website like
 Without using paid official APIs.
 
 ## Run locally
+### Install golang :
+```bash
+sudo snap install go
+```
 ### Clone the repository :
 ```bash
 git clone https://github.com/asterjdm/Cosmos-Search.git
 cd Cosmos-Search
 ```
-### Install requirements :
-```bash
-sudo snap install go
-```
 ### Run the app :
 ```
-go run
+go run main.go 
 ```
 ### You can now test the app at [localhost:5000](http://localhost:5000)
 
