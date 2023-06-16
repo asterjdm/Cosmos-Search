@@ -20,6 +20,9 @@ body {
 a {
     text-decoration: none;
 }
+p{
+    color: var(--content-color);
+}
 .main-search {
     margin-top: 10px;
     display: flex;
