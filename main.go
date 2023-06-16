@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 	"strconv"
-
+	"time"
 	"github.com/asterjdm/Cosmos-Search/engines"
 )
 
@@ -41,6 +41,9 @@ func home(w http.ResponseWriter, r *http.Request) {
 }
 
 func search(w http.ResponseWriter, r *http.Request) {
+	now := time.Now()
+	startTime := now.UnixMilli()
+
 	queryParams := r.URL.Query()
 	query := queryParams.Get("q")
 	pageString := queryParams.Get("page")
@@ -80,18 +83,24 @@ func search(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	now = time.Now()
+	endTime := now.UnixMilli()
+	totalSearchTimeSec := (float64(endTime) - float64(startTime))/1000
+
 	data := struct {
 		Results     []map[string]string
 		Query       string
 		NextPageUrl string
 		Info        map[string]interface{}
 		FoundInfo   bool
+		SearchTime float64
 	}{
 		Results:     results,
 		Query:       query,
 		NextPageUrl: next_page_url,
 		Info:        wikiInfo,
 		FoundInfo:   FoundInfo,
+		SearchTime: totalSearchTimeSec,
 	}
 
 	err = tmpl.Execute(w, data)
