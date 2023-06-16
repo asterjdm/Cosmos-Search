@@ -12,7 +12,7 @@ import (
 
 func main() {
 
-	fmt.Println("Now you can go on http://localhost:5000")
+	fmt.Println("Launched on : http://localhost:5000")
 	
 	http.HandleFunc("/", home)
 	http.HandleFunc("/search/", search)
