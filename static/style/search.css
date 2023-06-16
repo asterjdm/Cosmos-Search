@@ -23,6 +23,9 @@ a {
 p{
     color: var(--content-color);
 }
+.resultsTime{
+    text-align: center;
+}
 .main-search {
     margin-top: 10px;
     display: flex;
