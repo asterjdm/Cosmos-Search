@@ -4,5 +4,5 @@
     <LongName>Cosmos Search</LongName>
     <Description>Privacy friendly beautiful metasearch engine.</Description>
     <InputEncoding>UTF-8</InputEncoding>
-    <Url method="get" rel="results" type="text/html" template="https://cosmosearch.vercel.app/search/?query={searchTerms}" />
+    <Url method="get" rel="results" type="text/html" template="https://cosmos-search.onrender.com/search?q={searchTerms}" />
 </OpenSearchDescription>
