@@ -5,7 +5,7 @@ import (
 	"fmt"	
 )
 
-type Pages struct {
+type PageData struct {
 	PageID int `json:"pageid"`
 	NS     int `json:"ns"`
 	Title  string `json:"title"`
@@ -13,36 +13,46 @@ type Pages struct {
 }
 
 
-func GetWiki(query string) (map[string]interface{}, error) {
+func getFirstKey(m map[string]interface{}) (string, bool) {
+	for key := range m {
+		return key, true
+	}
+	return "", false
+}
+
+
+func GetWiki(query string) (*PageData, error) {
 	var searchData []interface{}
-	var encodedQuery string = web.UrlEncode(query)
-	var searchUrl string = fmt.Sprintf("https://en.wikipedia.org/w/api.php?action=opensearch&search=%s&limit=1&namespace=0&format=json", encodedQuery)
+	encodedQuery := web.UrlEncode(query)
+	searchUrl := fmt.Sprintf("https://en.wikipedia.org/w/api.php?action=opensearch&search=%s&limit=1&namespace=0&format=json", encodedQuery)
 	err := web.GetJson(searchUrl, &searchData)
 	if err != nil {
 		return nil, err
 	}
 
-	var resultTitle string = searchData[1].([]interface{})[0].(string)
+	resultTitle := searchData[1].([]interface{})[0].(string)
+	encodedResultTitle := web.UrlEncode(resultTitle)
 
+	pageInfoUrl := fmt.Sprintf("https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=%s", encodedResultTitle)
 
-	var encodedResultTitle string =  web.UrlEncode(resultTitle)
-
-	var pageInfoUrl string = fmt.Sprintf("https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=%s", encodedResultTitle)
-	var pageData struct
+	var pageData struct {
+		Query struct {
+			Pages map[string]PageData `json:"pages"`
+		} `json:"query"`
+	}
 
 	err = web.GetJson(pageInfoUrl, &pageData)
 	if err != nil {
 		return nil, err
 	}
 
-	fmt.Println(pageData)
-
+	pageSummary := pageData.Query.Pages.Extract
+	fmt.Println(pageSummary)
 
 	return nil, nil
 }
-
 func main() {
-	_, err := GetWiki("chat")
+	_, err := GetWiki("underscore")
 	if err != nil {
 		fmt.Println(err)
 	}
