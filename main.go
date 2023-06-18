@@ -8,10 +8,10 @@ import (
 	"strconv"
 	"time"
 	"github.com/asterjdm/Cosmos-Search/engines"
+	"github.com/asterjdm/Cosmos-Search/web"
 )
 
 func main() {
-
 	fmt.Println("Launched on : http://localhost:5000")
 	
 	http.HandleFunc("/", home)

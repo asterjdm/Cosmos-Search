@@ -40,30 +40,26 @@ func GetHtml(url string) (*bytes.Reader, error) {
 }
 
 
-func GetJson(url string){
+func GetJson(url string, data any) (error){
 	req, err := http.NewRequest("GET", url, nil)
     if err != nil {
-        return nil, err
+        return err
     }
 	req.Header.Set("User-Agent", USER_AGENT)
 	res, err := http.DefaultClient.Do(req)
     if err != nil {
-        fmt.Print(err.Error())
+        return err
     }
 
 	defer res.Body.Close()
 
 	body, err := ioutil.ReadAll(res.Body)
     if err != nil {
-       	return nil, err
+    	return err
     }
 
-	var data Data
 
 	err = json.Unmarshal(body, &data)
-	if err != nil {
-		return nil, err
-	}
 
-	return data, nil
+	return err
 }
