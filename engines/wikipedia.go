@@ -5,6 +5,13 @@ import (
 	"fmt"	
 )
 
+type Pages struct {
+	PageID int `json:"pageid"`
+	NS     int `json:"ns"`
+	Title  string `json:"title"`
+	Extract string `json:"extract"`
+}
+
 
 func GetWiki(query string) (map[string]interface{}, error) {
 	var searchData []interface{}
@@ -15,23 +22,28 @@ func GetWiki(query string) (map[string]interface{}, error) {
 		return nil, err
 	}
 
-	var string resultTitle = searchData[3][1]
+	var resultTitle string = searchData[1].([]interface{})[0].(string)
 
 
-	var string encodedResultTitle =  web.UrlEncode(resultTitle)
+	var encodedResultTitle string =  web.UrlEncode(resultTitle)
 
 	var pageInfoUrl string = fmt.Sprintf("https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=%s", encodedResultTitle)
-	var pageData []interface{}
+	var pageData struct
 
-	err := web.GetJson(pageInfoUrl, &pageData)
+	err = web.GetJson(pageInfoUrl, &pageData)
 	if err != nil {
 		return nil, err
 	}
+
+	fmt.Println(pageData)
 
 
 	return nil, nil
 }
 
 func main() {
-	GetWiki("chat")
+	_, err := GetWiki("chat")
+	if err != nil {
+		fmt.Println(err)
+	}
 }
