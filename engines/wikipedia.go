@@ -1,4 +1,4 @@
-package main
+package engines
 
 import (
 	"fmt"
@@ -77,11 +77,4 @@ func GetWiki(query string) (WikiInfo, error) {
 	
 
 	return result, nil
-}
-
-func main() {
-	_, err := GetWiki("underscore")
-	if err != nil {
-		fmt.Println(err)
-	}
 }
