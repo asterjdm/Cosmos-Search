@@ -16,6 +16,7 @@ type PageData struct {
 type WikiInfo struct {
 	Title string
 	Summary string
+	Found bool
 }
 
 func getFirstKey(m map[string]interface{}) (string, bool) {
@@ -30,12 +31,23 @@ func GetWiki(query string) (WikiInfo, error) {
 	encodedQuery := web.UrlEncode(query)
 	searchUrl := fmt.Sprintf("https://en.wikipedia.org/w/api.php?action=opensearch&search=%s&limit=1&namespace=0&format=json", encodedQuery)
 	err := web.GetJson(searchUrl, &searchData)
+
 	if err != nil {
 		result := WikiInfo{
 			Title: "",
 			Summary: "",
+			Found: false,
 		}
 		return result, err
+	}
+
+	if len(searchData[1].([]interface{})) <= 0{
+		result := WikiInfo{
+			Title: "",
+			Summary: "",
+			Found: false,
+		}
+		return result, nil
 	}
 
 	resultTitle := searchData[1].([]interface{})[0].(string)
@@ -54,6 +66,7 @@ func GetWiki(query string) (WikiInfo, error) {
 		result := WikiInfo{
 			Title: "",
 			Summary: "",
+			Found: false,
 		}
 		return result, err
 	}
@@ -73,8 +86,10 @@ func GetWiki(query string) (WikiInfo, error) {
 	result := WikiInfo{
 		Title:   wikiTitle,
 		Summary: wikiSummary,
+		Found: true,
 	}
 	
-
 	return result, nil
 }
+
+
