@@ -13,6 +13,11 @@ type PageData struct {
 	Extract string `json:"extract"`
 }
 
+type WikiInfo struct {
+	Title string
+	Summary string
+}
+
 func getFirstKey(m map[string]interface{}) (string, bool) {
 	for key := range m {
 		return key, true
@@ -20,13 +25,17 @@ func getFirstKey(m map[string]interface{}) (string, bool) {
 	return "", false
 }
 
-func GetWiki(query string) (*PageData, error) {
+func GetWiki(query string) (WikiInfo, error) {
 	var searchData []interface{}
 	encodedQuery := web.UrlEncode(query)
 	searchUrl := fmt.Sprintf("https://en.wikipedia.org/w/api.php?action=opensearch&search=%s&limit=1&namespace=0&format=json", encodedQuery)
 	err := web.GetJson(searchUrl, &searchData)
 	if err != nil {
-		return nil, err
+		result := WikiInfo{
+			Title: "",
+			Summary: "",
+		}
+		return result, err
 	}
 
 	resultTitle := searchData[1].([]interface{})[0].(string)
@@ -34,18 +43,22 @@ func GetWiki(query string) (*PageData, error) {
 
 	pageInfoUrl := fmt.Sprintf("https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=%s", encodedResultTitle)
 
-	var pageData struct {
+	var data struct {
 		Query struct {
 			Pages map[string]PageData `json:"pages"`
 		} `json:"query"`
 	}
 
-	err = web.GetJson(pageInfoUrl, &pageData)
+	err = web.GetJson(pageInfoUrl, &data)
 	if err != nil {
-		return nil, err
+		result := WikiInfo{
+			Title: "",
+			Summary: "",
+		}
+		return result, err
 	}
 
-	wikiPageInfoPage := pageData.Query.Pages
+	wikiPageInfoPage := data.Query.Pages
 
 	var firstPageKey string
 	for k := range wikiPageInfoPage {
@@ -56,9 +69,14 @@ func GetWiki(query string) (*PageData, error) {
 
 	wikiSummary := wikiPageInfoPage[firstPageKey].Extract
 	wikiTitle := wikiPageInfoPage[firstPageKey].Title
-	fmt.Println(wikiSummary)
 
-	return nil, nil
+	result := WikiInfo{
+		Title:   wikiTitle,
+		Summary: wikiSummary,
+	}
+	
+
+	return result, nil
 }
 
 func main() {
