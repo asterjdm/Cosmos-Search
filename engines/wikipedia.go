@@ -1,17 +1,17 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/asterjdm/Cosmos-Search/web"
-	"fmt"	
 )
 
 type PageData struct {
-	PageID int `json:"pageid"`
-	NS     int `json:"ns"`
-	Title  string `json:"title"`
+	PageID  int    `json:"pageid"`
+	NS      int    `json:"ns"`
+	Title   string `json:"title"`
 	Extract string `json:"extract"`
 }
-
 
 func getFirstKey(m map[string]interface{}) (string, bool) {
 	for key := range m {
@@ -19,7 +19,6 @@ func getFirstKey(m map[string]interface{}) (string, bool) {
 	}
 	return "", false
 }
-
 
 func GetWiki(query string) (*PageData, error) {
 	var searchData []interface{}
@@ -46,11 +45,22 @@ func GetWiki(query string) (*PageData, error) {
 		return nil, err
 	}
 
-	pageSummary := pageData.Query.Pages.Extract
-	fmt.Println(pageSummary)
+	wikiPageInfoPage := pageData.Query.Pages
+
+	var firstPageKey string
+	for k := range wikiPageInfoPage {
+		firstPageKey = k
+		break
+	}
+
+
+	wikiSummary := wikiPageInfoPage[firstPageKey].Extract
+	wikiTitle := wikiPageInfoPage[firstPageKey].Title
+	fmt.Println(wikiSummary)
 
 	return nil, nil
 }
+
 func main() {
 	_, err := GetWiki("underscore")
 	if err != nil {
