@@ -7,13 +7,14 @@ import (
 	"net/http"
 	"strconv"
 	"time"
+
 	"github.com/asterjdm/Cosmos-Search/engines"
-	"github.com/asterjdm/Cosmos-Search/web"
+	_"github.com/asterjdm/Cosmos-Search/web"
 )
 
 func main() {
-	fmt.Println("Launched on : http://localhost:5000")
-	
+	fmt.Println("Launched on: http://localhost:5000")
+
 	http.HandleFunc("/", home)
 	http.HandleFunc("/search/", search)
 
@@ -21,9 +22,6 @@ func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
 	log.Fatal(http.ListenAndServe(":5000", nil))
-	
-
-
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
@@ -71,36 +69,31 @@ func search(w http.ResponseWriter, r *http.Request) {
 	}
 
 	wikiInfo, err := engines.GetWiki(query)
-
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	FoundInfo, ok := wikiInfo["Found"].(bool)
-	if !ok {
-		http.Error(w, "Erreur lors de la conversion du champ Found en booléen", http.StatusInternalServerError)
-		return
-	}
+	FoundInfo := wikiInfo.Found
 
 	now = time.Now()
 	endTime := now.UnixMilli()
-	totalSearchTimeSec := (float64(endTime) - float64(startTime))/1000
+	totalSearchTimeSec := (float64(endTime) - float64(startTime)) / 1000
 
 	data := struct {
 		Results     []map[string]string
 		Query       string
 		NextPageUrl string
-		Info        map[string]interface{}
+		Info        engines.WikiInfo
 		FoundInfo   bool
-		SearchTime float64
+		SearchTime  float64
 	}{
 		Results:     results,
 		Query:       query,
 		NextPageUrl: next_page_url,
 		Info:        wikiInfo,
 		FoundInfo:   FoundInfo,
-		SearchTime: totalSearchTimeSec,
+		SearchTime:  totalSearchTimeSec,
 	}
 
 	err = tmpl.Execute(w, data)
